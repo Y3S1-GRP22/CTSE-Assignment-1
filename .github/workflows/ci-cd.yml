@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Build Docker Image
+        run: docker build -t sajeevanit21204302/ctse-assignment:latest .
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker Image
+        run: |
+          docker tag sajeevanit21204302/ctse-assignment:latest sajeevanit21204302/ctse-assignment:latest
+          docker push saje1evanit2204302/ctse-assignment:latest
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ctseassignment1-dmgrdsd5ducxfydg
+          slot-name: production
+          images: sajeevanit21204302/ctse-assignment:latest
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
