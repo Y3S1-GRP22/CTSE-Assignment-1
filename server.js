@@ -4,7 +4,7 @@ const databaseConnection = require("./config/dbConnection");
 const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 8090;
+const port = process.env.PORT || 80;
 
 app.use(express.json());
 app.use(
@@ -13,6 +13,10 @@ app.use(
     credentials: true,
   })
 );
+
+app.use('/', (req, res) => {
+  res.json({ msg: 'API is working!' });
+});
 
 app.use("/v1/users", require("./routes/userRoutes"));
 
