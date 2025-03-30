@@ -39,7 +39,7 @@ jobs:
       - name: Push Docker Image
         run: |
           docker tag sajeevanit21204302/ctse-assignment:latest sajeevanit21204302/ctse-assignment:latest
-          docker push saje1evanit2204302/ctse-assignment:latest
+          docker push sajeevanit21204302/ctse-assignment:latest
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
