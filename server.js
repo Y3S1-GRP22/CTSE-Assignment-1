@@ -15,10 +15,10 @@ app.use(
 );
 
 app.use('/', (req, res) => {
-  res.json({ msg: 'API is working!' });
+  res.json({ msg: 'Hey World, API is working!' });
 });
 
-app.use("/v1/users", require("./routes/userRoutes"));
+app.use("/users", require("./routes/userRoutes"));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
