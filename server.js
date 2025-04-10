@@ -14,9 +14,6 @@ app.use(
   })
 );
 
-app.use("/", (req, res) => {
-  res.json({ msg: "Hey World, API is working!" });
-});
 
 app.use("/users", require("./routes/userRoutes"));
 
