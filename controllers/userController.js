@@ -27,3 +27,14 @@ exports.login = async (req, res) => {
   });
   res.json({ token });
 };
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    // Fetch all users, excluding the password field
+    const users = await User.find({}, { password: 0 });
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
