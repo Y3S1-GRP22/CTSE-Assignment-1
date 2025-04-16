@@ -35,14 +35,11 @@ jobs:
           tags: index.docker.io/${{ secrets.DOCKER_USERNAME }}/ctse-assignment:${{ github.sha }}
           file: ./Dockerfile
 
-      # ✅ Snyk Security Scan for Node.js project
       - name: Run Snyk to check for vulnerabilities
         continue-on-error: true
-        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: test
+        run: snyk test
 
   deploy:
     runs-on: ubuntu-latest
