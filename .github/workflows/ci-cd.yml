@@ -43,6 +43,12 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: snyk test
+        
+      - name: Monitor project in Snyk dashboard
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk monitor
 
   deploy:
     runs-on: ubuntu-latest
