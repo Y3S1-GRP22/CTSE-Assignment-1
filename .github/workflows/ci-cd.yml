@@ -34,6 +34,9 @@ jobs:
           push: true
           tags: index.docker.io/${{ secrets.DOCKER_USERNAME }}/ctse-assignment:${{ github.sha }}
           file: ./Dockerfile
+          
+      - name: Install Snyk CLI
+        run: npm install -g snyk
 
       - name: Run Snyk to check for vulnerabilities
         continue-on-error: true
