@@ -14,7 +14,6 @@ exports.register = async (req, res) => {
   res.status(201).json({ msg: "User registered" });
 };
 
-
 exports.login = async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
@@ -28,7 +27,6 @@ exports.login = async (req, res) => {
   });
   res.json({ token });
 };
-
 
 exports.getAllUsers = async (req, res) => {
   try {
