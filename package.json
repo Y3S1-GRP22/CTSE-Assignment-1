@@ -1,7 +1,7 @@
 {
-  "name": "educational-platform-for-online-learning-backend",
+  "name": "user-management-service",
   "version": "1.0.0",
-  "description": "backend for user management service",
+  "description": "Backend for user authentication and management service",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
