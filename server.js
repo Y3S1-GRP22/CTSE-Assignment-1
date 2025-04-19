@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
   res.json({ msg: "Hey, CTSE Deployment is working!" });
 });
 
+
 // User route
 app.use("/users", require("./routes/userRoutes"));
 
