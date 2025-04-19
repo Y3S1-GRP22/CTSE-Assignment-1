@@ -19,7 +19,7 @@ app.use(
   })
 );
 
-// Health check 
+// Health check
 app.get("/", (req, res) => {
   res.json({ msg: "Hey, CTSE Deployment is working!" });
 });
